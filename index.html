@@ -9,21 +9,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* Adjust these to match your exact brand colors */
-    --csg-dark: #0a1628;
-    --csg-darker: #050d18;
-    --csg-accent: #ffd60a;     /* lightning bolt yellow */
-    --csg-accent-warm: #ff8c42; /* warm orange accent */
-    --csg-text: #1a2332;
-    --csg-muted: #5a6573;
+    --csg-red: #d32f2f;
+    --csg-red-deep: #a82323;
+    --csg-red-soft: #fdecec;
+    --csg-dark: #2a2d33;
+    --csg-darker: #1a1c20;
+    --csg-text: #2a2d33;
+    --csg-muted: #6b6f78;
     --csg-bg: #ffffff;
-    --csg-bg-soft: #f5f7fa;
-    --csg-border: #e1e5eb;
-    --csg-success: #00b87c;
+    --csg-bg-soft: #f7f7f8;
+    --csg-border: #e5e6e9;
+    --csg-success: #00a86b;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -34,18 +33,16 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ───── Top notification bar (matches site) ───── */
   .top-bar {
     background: var(--csg-dark);
     color: #fff;
     text-align: center;
-    padding: 8px 16px;
+    padding: 9px 16px;
     font-size: 13px;
     font-weight: 500;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
   }
 
-  /* ───── Hero ───── */
   .hero {
     background: linear-gradient(135deg, var(--csg-dark) 0%, var(--csg-darker) 100%);
     color: #fff;
@@ -61,7 +58,7 @@
     right: -100px;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(255, 214, 10, 0.08) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(211, 47, 47, 0.15) 0%, transparent 60%);
     pointer-events: none;
   }
 
@@ -72,7 +69,7 @@
     left: -150px;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(255, 140, 66, 0.06) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(211, 47, 47, 0.08) 0%, transparent 60%);
     pointer-events: none;
   }
 
@@ -94,9 +91,9 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 214, 10, 0.15);
-    border: 1px solid rgba(255, 214, 10, 0.3);
-    color: var(--csg-accent);
+    background: rgba(211, 47, 47, 0.15);
+    border: 1px solid rgba(211, 47, 47, 0.35);
+    color: #ff6b6b;
     padding: 6px 14px;
     border-radius: 100px;
     font-size: 12px;
@@ -108,23 +105,17 @@
     animation: fadeUp 0.5s ease-out forwards;
   }
 
-  .bolt {
-    display: inline-block;
-    color: var(--csg-accent);
-    font-weight: 700;
-  }
-
   .pulse-dot {
     width: 8px;
     height: 8px;
-    background: var(--csg-accent);
+    background: #ff6b6b;
     border-radius: 50%;
     animation: pulse 1.6s ease-in-out infinite;
   }
 
   @keyframes pulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255, 214, 10, 0.6); }
-    50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(255, 214, 10, 0); }
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.6); }
+    50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(255, 107, 107, 0); }
   }
 
   h1.hero-title {
@@ -138,8 +129,7 @@
   }
 
   .hero-title .accent {
-    color: var(--csg-accent);
-    position: relative;
+    color: #ff6b6b;
   }
 
   .hero-sub {
@@ -151,7 +141,7 @@
     animation: fadeUp 0.6s ease-out 0.2s forwards;
   }
 
-  /* ───── Stats row (mimics "By the Numbers") ───── */
+  /* Stats */
   .stats {
     background: var(--csg-bg);
     margin-top: -60px;
@@ -167,7 +157,7 @@
     background: #fff;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(10, 22, 40, 0.15);
+    box-shadow: 0 20px 60px rgba(42, 45, 51, 0.12);
     border: 1px solid var(--csg-border);
   }
 
@@ -193,7 +183,7 @@
   }
 
   .stat-value .unit {
-    color: var(--csg-accent-warm);
+    color: var(--csg-red);
   }
 
   .stat-label {
@@ -204,7 +194,7 @@
     margin: 0 auto;
   }
 
-  /* ───── Diagnostics section ───── */
+  /* Diagnostics */
   .diagnostics {
     padding: 100px 24px 60px;
     background: var(--csg-bg);
@@ -217,7 +207,7 @@
 
   .section-eyebrow {
     display: inline-block;
-    color: var(--csg-accent-warm);
+    color: var(--csg-red);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.15em;
@@ -279,6 +269,7 @@
 
   .diag-label { font-weight: 500; }
 
+  /* ─── ANIMATED BARS ─── */
   .diag-track {
     height: 10px;
     background: var(--csg-bg-soft);
@@ -289,30 +280,107 @@
 
   .diag-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--csg-dark), var(--csg-accent-warm));
+    background: var(--csg-success);
     border-radius: 100px;
     width: 0;
-    animation: fillBar 1.4s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 12px rgba(0, 168, 107, 0.35);
+    /* Initial fill animation, then breathe forever */
+    animation:
+      fillBar 1.4s cubic-bezier(0.65, 0, 0.35, 1) forwards,
+      breathe 3.5s ease-in-out infinite;
+    animation-delay: 0s, 1.6s;
   }
 
-  .diag-fill.gold { background: linear-gradient(90deg, var(--csg-accent-warm), var(--csg-accent)); }
+  .diag-fill.red { background: var(--csg-success); }
 
-  .diag-row:nth-child(2) .diag-fill { animation-delay: 0.7s; --w: 96%; }
-  .diag-row:nth-child(3) .diag-fill { animation-delay: 0.85s; --w: 88%; }
-  .diag-row:nth-child(4) .diag-fill { animation-delay: 1.0s; --w: 100%; }
-  .diag-row:nth-child(5) .diag-fill { animation-delay: 1.15s; --w: 73%; }
+  /* Each row gets its own target width and timing */
+  .diag-row:nth-child(2) .diag-fill {
+    --w: 96%;
+    animation-delay: 0.7s, 2.3s;
+  }
+  .diag-row:nth-child(3) .diag-fill {
+    --w: 88%;
+    animation-delay: 0.85s, 2.4s;
+  }
+  .diag-row:nth-child(4) .diag-fill {
+    --w: 100%;
+    animation-delay: 1.0s, 2.5s;
+  }
+  .diag-row:nth-child(5) .diag-fill {
+    --w: 73%;
+    animation-delay: 1.15s, 2.6s;
+  }
 
-  @keyframes fillBar { to { width: var(--w); } }
+  /* Initial fill from 0 to target */
+  @keyframes fillBar {
+    from { width: 0; }
+    to { width: var(--w); }
+  }
 
+  /* Gentle breathing — bars subtly grow and shrink so they feel alive */
+  @keyframes breathe {
+    0%, 100% {
+      width: var(--w);
+      filter: brightness(1);
+    }
+    50% {
+      width: calc(var(--w) - 3%);
+      filter: brightness(1.15);
+    }
+  }
+
+  /* The shimmer effect — a moving highlight that sweeps across each bar */
+  .diag-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.35) 50%,
+      transparent 100%
+    );
+    animation: shimmer 2.8s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  .diag-row:nth-child(2) .diag-fill::after { animation-delay: 2.0s; }
+  .diag-row:nth-child(3) .diag-fill::after { animation-delay: 2.4s; }
+  .diag-row:nth-child(4) .diag-fill::after { animation-delay: 2.8s; }
+  .diag-row:nth-child(5) .diag-fill::after { animation-delay: 3.2s; }
+
+  @keyframes shimmer {
+    0% { left: -50%; }
+    60%, 100% { left: 110%; }
+  }
+
+  /* Animated value digits — the percentage number ticks slightly too */
   .diag-value {
     text-align: right;
     font-family: 'JetBrains Mono', monospace;
     font-weight: 700;
     font-size: 13px;
     color: var(--csg-dark);
+    transition: color 0.3s ease;
   }
 
-  /* ───── Certificate / quote block (mimics testimonial style) ───── */
+  .diag-value.flicker {
+    animation: valueFlicker 3.5s ease-in-out infinite;
+  }
+
+  @keyframes valueFlicker {
+    0%, 100% { opacity: 1; }
+    49% { opacity: 1; }
+    50% { opacity: 0.6; }
+    51% { opacity: 1; }
+  }
+
+  /* Certificate */
   .cert-section {
     padding: 60px 24px;
     background: var(--csg-bg-soft);
@@ -325,15 +393,15 @@
     text-align: center;
     border: 1px solid var(--csg-border);
     position: relative;
-    box-shadow: 0 4px 20px rgba(10, 22, 40, 0.06);
+    box-shadow: 0 4px 20px rgba(42, 45, 51, 0.06);
   }
 
   .cert-stamp {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--csg-accent);
-    color: var(--csg-dark);
+    background: var(--csg-red);
+    color: #fff;
     padding: 8px 18px;
     border-radius: 100px;
     font-size: 11px;
@@ -345,12 +413,12 @@
 
   .cert-quote {
     font-size: 1.4rem;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1.5;
     color: var(--csg-dark);
     max-width: 580px;
     margin: 0 auto 24px;
-    font-style: italic;
+    letter-spacing: -0.01em;
   }
 
   .cert-attr {
@@ -361,7 +429,6 @@
     color: var(--csg-muted);
   }
 
-  /* ───── Handoff CTA ───── */
   .handoff {
     padding: 80px 24px 100px;
     background: var(--csg-bg);
@@ -399,29 +466,29 @@
     align-items: center;
     gap: 8px;
     padding: 16px 28px;
-    border-radius: 8px;
+    border-radius: 100px;
     font-size: 15px;
     font-weight: 600;
     text-decoration: none;
     transition: all 0.2s ease;
     letter-spacing: 0.01em;
+    border: none;
+    cursor: pointer;
   }
 
   .btn-primary {
-    background: var(--csg-dark);
+    background: var(--csg-red);
     color: #fff;
-    border: 2px solid var(--csg-dark);
   }
 
   .btn-primary:hover {
-    background: var(--csg-accent-warm);
-    border-color: var(--csg-accent-warm);
+    background: var(--csg-red-deep);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(255, 140, 66, 0.3);
+    box-shadow: 0 8px 20px rgba(211, 47, 47, 0.3);
   }
 
   .btn-secondary {
-    background: transparent;
+    background: #fff;
     color: var(--csg-dark);
     border: 2px solid var(--csg-border);
   }
@@ -431,7 +498,6 @@
     background: var(--csg-bg-soft);
   }
 
-  /* ───── Disclaimer ───── */
   .disclaimer {
     padding: 40px 24px 80px;
     background: var(--csg-bg);
@@ -457,13 +523,21 @@
 
   .disclaimer p { margin-bottom: 12px; }
 
-  /* ───── Animations ───── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ───── Mobile ───── */
+  /* Respect users with motion sensitivity */
+  @media (prefers-reduced-motion: reduce) {
+    .diag-fill {
+      animation: fillBar 1.4s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    }
+    .diag-fill::after { display: none; }
+    .diag-value.flicker { animation: none; }
+  }
+
+  /* Mobile */
   @media (max-width: 768px) {
     .hero { padding: 60px 20px 80px; }
     .stats { padding: 0 16px; margin-top: -50px; }
@@ -482,9 +556,8 @@
 </head>
 <body>
 
-<div class="top-bar">⚡ Calibration successful — please remain dazzling</div>
+<div class="top-bar">Calibration successful — please remain dazzling</div>
 
-<!-- HERO -->
 <section class="hero">
   <div class="container-narrow">
     <span class="eyebrow"><span class="pulse-dot"></span>System Notice</span>
@@ -493,7 +566,6 @@
   </div>
 </section>
 
-<!-- STATS -->
 <section class="stats">
   <div class="container">
     <div class="stats-grid">
@@ -513,11 +585,10 @@
   </div>
 </section>
 
-<!-- DIAGNOSTICS -->
 <section class="diagnostics">
   <div class="container-narrow">
     <div class="section-header">
-      <span class="section-eyebrow">⚡ Real-Time System Diagnostics</span>
+      <span class="section-eyebrow">Real-Time System Diagnostics</span>
       <h2 class="section-title">Connectivity confirmed across all attractiveness subsystems.</h2>
     </div>
 
@@ -529,39 +600,37 @@
       <div class="diag-row">
         <div class="diag-label">Charisma Buffer</div>
         <div class="diag-track"><div class="diag-fill"></div></div>
-        <div class="diag-value">96%</div>
+        <div class="diag-value flicker" data-target="96">96%</div>
       </div>
       <div class="diag-row">
         <div class="diag-label">Vibes (Ambient)</div>
-        <div class="diag-track"><div class="diag-fill gold"></div></div>
-        <div class="diag-value">88%</div>
+        <div class="diag-track"><div class="diag-fill red"></div></div>
+        <div class="diag-value flicker" data-target="88">88%</div>
       </div>
       <div class="diag-row">
         <div class="diag-label">Posture Calibration</div>
         <div class="diag-track"><div class="diag-fill"></div></div>
-        <div class="diag-value">100%</div>
+        <div class="diag-value flicker" data-target="100">100%</div>
       </div>
       <div class="diag-row">
         <div class="diag-label">Mystery Reserves</div>
-        <div class="diag-track"><div class="diag-fill gold"></div></div>
-        <div class="diag-value">73%</div>
+        <div class="diag-track"><div class="diag-fill red"></div></div>
+        <div class="diag-value flicker" data-target="73">73%</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CERTIFICATE -->
 <section class="cert-section">
   <div class="container-narrow">
     <div class="cert">
-      <div class="cert-stamp">⚡ Certified · Official</div>
+      <div class="cert-stamp">Certified · Official</div>
       <p class="cert-quote">"The bearer of this document is, as of today, demonstrably more attractive than they were several seconds ago. We don't make the rules."</p>
       <div class="cert-attr">— The CSG Committee on Aesthetic Affairs</div>
     </div>
   </div>
 </section>
 
-<!-- HANDOFF -->
 <section class="handoff">
   <div class="container-narrow">
     <h2>Now that you're slightly hotter, you might as well see what we actually do.</h2>
@@ -573,15 +642,34 @@
   </div>
 </section>
 
-<!-- DISCLAIMER -->
 <section class="disclaimer">
   <div class="disclaimer-inner">
-    <div class="disclaimer-title">⚡ Terms & Fine Print</div>
+    <div class="disclaimer-title">Terms & Fine Print</div>
     <p>Results may vary. The 4% figure is approximate, non-cumulative, and not recognized by any regulatory body, scientific institution, governing standard, or your mother. Do not operate heavy machinery while being this attractive. Side effects may include: people laughing slightly harder at your jokes, marginally improved selfie outcomes, and an unexplained urge to start a podcast.</p>
     <p>This calibration is non-transferable. Attempting to share your 4% with another person voids the calibration and may, in rare cases, make you 2% less attractive as a corrective measure. The CSG Committee on Aesthetic Affairs assumes no liability for compliments received, declined, or misinterpreted.</p>
     <p>If you are reading this fine print, your attention to detail has been noted and logged. +0.1% bonus applied. You're welcome.</p>
   </div>
 </section>
+
+<script>
+  // Subtle live-ticker on the percentage values — they jitter ±1% so they feel alive
+  const valueEls = document.querySelectorAll('.diag-value');
+
+  function tickValues() {
+    valueEls.forEach(el => {
+      const target = parseInt(el.dataset.target, 10);
+      // Jitter by ±1, clamped to 0-100
+      const jitter = Math.floor(Math.random() * 3) - 1;
+      const display = Math.max(0, Math.min(100, target + jitter));
+      el.textContent = display + '%';
+    });
+  }
+
+  // Wait for the initial fill animation, then start ticking
+  setTimeout(() => {
+    setInterval(tickValues, 1800);
+  }, 2200);
+</script>
 
 </body>
 </html>
