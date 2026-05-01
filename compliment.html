@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Compliment, On Us | Connected Solutions Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --csg-red: #d32f2f;
+    --csg-red-deep: #a82323;
+    --csg-red-soft: #fdecec;
+    --csg-dark: #2a2d33;
+    --csg-darker: #1a1c20;
+    --csg-text: #2a2d33;
+    --csg-muted: #6b6f78;
+    --csg-bg: #ffffff;
+    --csg-bg-soft: #f7f7f8;
+    --csg-border: #e5e6e9;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--csg-bg-soft);
+    color: var(--csg-text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  .top-bar {
+    background: var(--csg-dark);
+    color: #fff;
+    text-align: center;
+    padding: 9px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  .page {
+    padding: 56px 24px 80px;
+    min-height: calc(100vh - 36px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container {
+    max-width: 640px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .header {
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeUp 0.5s ease-out forwards;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    color: var(--csg-red);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .header h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    color: var(--csg-dark);
+    margin-bottom: 14px;
+  }
+
+  .header h1 em {
+    font-style: normal;
+    color: var(--csg-red);
+  }
+
+  .header p {
+    font-size: 1rem;
+    color: var(--csg-muted);
+    max-width: 460px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 48px 36px;
+    box-shadow:
+      0 1px 2px rgba(42, 45, 51, 0.04),
+      0 12px 32px rgba(42, 45, 51, 0.07);
+    border: 1px solid var(--csg-border);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out 0.15s forwards;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--csg-red);
+  }
+
+  .card-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--csg-muted);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    font-weight: 600;
+  }
+
+  .compliment {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.25rem, 2.6vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--csg-dark);
+    letter-spacing: -0.015em;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .compliment.fading {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.5s ease-out 0.3s forwards;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 24px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-primary {
+    background: var(--csg-red);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    background: var(--csg-red-deep);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(211, 47, 47, 0.3);
+  }
+
+  .btn-primary:active { transform: translateY(0); }
+
+  .btn-secondary {
+    background: #fff;
+    color: var(--csg-dark);
+    border: 1.5px solid var(--csg-border);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--csg-dark);
+    background: var(--csg-bg-soft);
+  }
+
+  .counter {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--csg-muted);
+    margin-bottom: 56px;
+    letter-spacing: 0.04em;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out 0.5s forwards;
+  }
+
+  .counter strong { color: var(--csg-dark); font-weight: 700; }
+
+  .footer-card {
+    background: var(--csg-dark);
+    color: #fff;
+    border-radius: 18px;
+    padding: 32px 28px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeUp 0.5s ease-out 0.6s forwards;
+  }
+
+  .footer-card p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .footer-card .signoff {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.15rem;
+    color: #fff;
+    margin-bottom: 22px;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+
+  .footer-card .signoff strong {
+    color: #fff;
+    font-weight: 800;
+  }
+
+  .footer-link {
+    display: inline-block;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    background: var(--csg-red);
+    padding: 10px 22px;
+    border-radius: 100px;
+    transition: all 0.2s ease;
+  }
+
+  .footer-link:hover {
+    background: var(--csg-red-deep);
+    transform: translateY(-1px);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @media (max-width: 540px) {
+    .page { padding: 36px 16px 56px; }
+    .card { padding: 36px 24px; min-height: 240px; }
+    .compliment { font-size: 1.15rem; }
+    .footer-card { padding: 28px 22px; }
+    .actions { gap: 8px; }
+    .btn { padding: 12px 18px; font-size: 13px; }
+    .header h1 { font-size: 1.85rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">A small thank you from the team at CSG</div>
+
+<div class="page">
+  <div class="container">
+
+    <div class="header">
+      <span class="eyebrow">Compliment Dispenser</span>
+      <h1>Here's a compliment, <em>just for you.</em></h1>
+      <p>Independently verified by our team to be 100% true. Tap below for another whenever you need one.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number" id="card-number">COMPLIMENT №001</div>
+      <div class="compliment" id="compliment">Loading something nice...</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" id="next-btn">
+        Give me another →
+      </button>
+      <button class="btn btn-secondary" id="share-btn">
+        Copy to share
+      </button>
+    </div>
+
+    <div class="counter" id="counter">
+      Compliments dispensed in this session: <strong id="count">1</strong>
+    </div>
+
+    <div class="footer-card">
+      <p>From the team at</p>
+      <div class="signoff"><strong>Connected Solutions Group</strong><br>thanks for being here.</div>
+      <a href="https://connectedsolutionsgroup.com" class="footer-link">Visit Our Website →</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const compliments = [
+    "You have the kind of energy that makes other people stand up a little straighter when you walk into a room. We don't know how you do it. Keep doing it.",
+    "Your taste is genuinely good. Not 'good for someone who has other priorities.' Just good. The people around you are quietly benefiting from this.",
+    "You're the kind of person who actually reads the fine print, which means you've read this far, which means we're talking to the right person right now.",
+    "Whatever you're worried about today — you're handling it better than you think you are. We've checked. The math is in your favor.",
+    "You give thoughtful gifts. Not just on holidays. Just sometimes. For no reason. That's an underrated personality trait and we want you to know we noticed.",
+    "Your laugh is the kind of laugh that makes other people in the room feel like the joke was funnier than it actually was. This is a real superpower.",
+    "You ask follow-up questions. Real ones. Most people don't. You're better at being a person than you give yourself credit for.",
+    "If we had to bet on one person in this room becoming the kind of leader people actually want to work for, our money is on you. We're not just saying that.",
+    "You're suspiciously well-dressed for whatever you have going on today. We're not asking questions. We just wanted to acknowledge it.",
+    "The world is measurably better at the things you care about, specifically because you care about them. That's not a small thing. That's a whole thing.",
+    "You bring the energy back into rooms that were running low on it. We've watched you do it. You don't even realize you're doing it.",
+    "Your handwriting is probably nicer than you think. Statistically speaking. We're going off vibes here, but we feel confident.",
+    "You remember things people told you weeks ago and bring them up at exactly the right moment. This is a rare and beautiful trait. Don't lose it.",
+    "Whatever you decided not to do this week — you were right to not do it. Trust the instinct. It was the move.",
+    "You have at least one weird hobby that you don't talk about enough. Talk about it more. The world needs more of whatever that is.",
+    "You're the friend people text when something good happens. That's not an accident. That's earned. You did that.",
+    "The way you said hi to someone today made their entire morning better, and you'll probably never know about it. We thought you should.",
+    "You're funnier than you think and smarter than you let on. Both of these things are working in your favor more than you realize.",
+    "If your past self could see you right now, they'd be impressed. Maybe a little jealous. Definitely proud. Bank that one for a hard day.",
+    "You're doing better than you were a year ago. Even if it doesn't feel like it. We pulled the records. It checks out.",
+    "Your patience with people who don't deserve it has not gone unnoticed. We've got a tab open on this. You're being credited.",
+    "You make playlists with intent. We can tell. Even the short ones. Especially the short ones.",
+    "You've gotten through 100% of your hardest days so far. The track record is, frankly, undefeated.",
+    "Whatever you're overthinking — they like you. We checked. They like you a normal, healthy, non-suspicious amount.",
+    "You could've chosen to be cynical and you keep choosing not to be. We see that. It's harder than people give it credit for.",
+    "You're the kind of person who notices when someone's quieter than usual. That's a superpower you have to actively work to keep, and you're keeping it.",
+    "Your standards for yourself are higher than your standards for other people, which is rare and a little unfair to you. Be 8% kinder to yourself this week.",
+    "You're building something. Maybe a career, maybe a family, maybe just a slightly better version of yourself. It's working. Keep building."
+  ];
+
+  const shuffled = [...compliments].sort(() => Math.random() - 0.5);
+  let index = 0;
+  let count = 1;
+
+  const complimentEl = document.getElementById('compliment');
+  const cardNumEl = document.getElementById('card-number');
+  const countEl = document.getElementById('count');
+  const nextBtn = document.getElementById('next-btn');
+  const shareBtn = document.getElementById('share-btn');
+
+  function showCompliment(i) {
+    const num = String((i % shuffled.length) + 1).padStart(3, '0');
+    cardNumEl.textContent = `COMPLIMENT №${num}`;
+    complimentEl.textContent = shuffled[i % shuffled.length];
+  }
+
+  showCompliment(0);
+
+  nextBtn.addEventListener('click', () => {
+    complimentEl.classList.add('fading');
+    cardNumEl.classList.add('fading');
+    setTimeout(() => {
+      index++;
+      count++;
+      showCompliment(index);
+      countEl.textContent = count;
+      complimentEl.classList.remove('fading');
+      cardNumEl.classList.remove('fading');
+    }, 250);
+  });
+
+  shareBtn.addEventListener('click', () => {
+    const text = `"${shuffled[index % shuffled.length]}" — a compliment from the team at Connected Solutions Group`;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(() => {
+        const original = shareBtn.textContent;
+        shareBtn.textContent = '✓ Copied';
+        setTimeout(() => { shareBtn.textContent = original; }, 1800);
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
